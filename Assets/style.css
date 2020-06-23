@@ -1,0 +1,49 @@
+body {
+    background-color: rgb(228, 228, 228);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 0.2em;
+}
+
+.main-box {
+    background-color: white;
+    border-radius: 5px;
+    border-style: transparent;
+    border-width: 0.2em;
+    box-shadow: 0.2em 0.2em 7px gray;
+    justify-self: center;
+    justify-content: center;
+    min-width: 100%;
+    text-align: center;
+    padding: 1em;
+    margin-top: 2em;
+}
+
+h2 {
+    text-align: left;
+}
+
+.password-box {
+    border-radius: 5px;
+    border-style: dashed;
+    border-width: 0.2em;
+    border-color: gray;
+    padding: 3em;
+    margin: 3em;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h3 {
+    text-align: center;
+    color: gray;
+}
+
+.button-red {
+    background-color: rgb(141, 5, 5);
+    color: white;
+    font-weight: bold;
+    margin: 0.5em;
+}
