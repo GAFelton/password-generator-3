@@ -36,6 +36,24 @@
     var wantNumber = confirm("Do you want your password to contain Numbers? \n[Ex. 2, 4, 8]");
     var wantSpecial = confirm("Do you want your password to contain special characters? \n[Ex. $, *, @]");
 
+    var passwordParameters = {
+        passUpper: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
+        passLower: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
+        passNumber: ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
+        passSpecial: [" ", "!", "'", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~"],
+        passString = '',
+        password = '',
+
+        generatePassword: function(len) {
+            let len=wantLength;
+
+            if (wantUpper === true) {
+                passString.push(passUpper);
+            }
+        }
+
+
+    }
 
     if (wantUpper && wantLower && wantNumber && wantSpecial) {
 
