@@ -28,8 +28,51 @@
         </div>
     </section>
 
+    <!-- "Generate Password" Button JavaScript -->
+    <script type="text/javascript">
+    var wantLength = prompt("How long do you want your password to be? Enter a number between 8 and 128.");
+    var wantUpper = confirm("Do you want your password to contain Uppercase characters? \n[Ex. W, U, T]" );
+    var wantLower = confirm("Do you want your password to contain lowercase characters? \n[Ex. g, a, f]");
+    var wantNumber = confirm("Do you want your password to contain Numbers? \n[Ex. 2, 4, 8]");
+    var wantSpecial = confirm("Do you want your password to contain special characters? \n[Ex. $, *, @]");
 
 
+    if (wantUpper && wantLower && wantNumber && wantSpecial) {
+
+    }
+
+/* PSEUDOCODE
+Object passwordParameters:
+passUpper [ABCDEFGHIJKLMNOPQRSTUVWXYZ]
+passLower [abcdefghijklmnopqrstuvwxyz]
+passNumber [123456789]
+passSpecial [ !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]
+passString = '';
+password = '';
+generatePassword: function (len){
+let len = wantLength;
+if wantUpper = true, add passUpper
+if wantLower = true, add passLower
+if wantNumber = true, add passNumber
+if wantSpecial = true, add passSpecial
+var totalString = (passString.length)
+
+for i=0, i<len, i++ {
+password += passString.charAt(Math.floor(Math.random() * totalString))
+}
+}    
+
+wantLength prompt sets a variable for total characters.
+wantUpper will add all Uppercase characters to the generation loop.
+wantLower will add all lowercase characters to the generation loop.
+wantNumber will add all numbers to the generation loop.
+wantSpecial will add all special characters to the generation loop.
+
+
+*/
+
+    </script>
+    <!-- Bootstrap Javascript Refs -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
