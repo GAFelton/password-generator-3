@@ -46,9 +46,33 @@
 
         generatePassword: function(len) {
             let len=wantLength;
+            let totalString = (passString.length);
 
             if (wantUpper === true) {
                 passString.push(passUpper);
+            }
+            else {}
+
+            if (wantLower === true) {
+                passString.push(passLower);
+            }
+            else {}
+
+            if (wantNumber === true) {
+                passString.push(passNumber);
+            }
+            else {}
+
+            if (wantSpecial === true) {
+                passString.push(passSpecial);
+            }
+            else {}
+
+
+            for (j = 0, j < len, j++) {
+            password.push(passString.charAt(Math.floor(Math.random() * totalString)));
+
+            return password;
             }
         }
 
