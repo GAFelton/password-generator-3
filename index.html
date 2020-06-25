@@ -40,7 +40,7 @@
     var wantSpecial = false;
 
     function userPrompt() {
-        while(wantLength <= 8 || wantLength >= 128) {
+        while(wantLength < 8 || wantLength > 128) {
             wantLength = prompt("How long do you want your password to be? Enter a number between 8 and 128.");
             if(isNaN(wantLength)) {
             wantLength  = 0;
@@ -49,7 +49,7 @@
             }
             wantLength = parseInt(wantLength);
 
-            if(wantLength <= 8 || wantLength >= 128) {
+            if(wantLength < 8 || wantLength > 128) {
                 wantLength  = 0;
                 alert("Please enter a valid number between 8 and 128.");
                 continue;
