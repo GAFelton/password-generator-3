@@ -34,41 +34,40 @@
     var passString = '';
     var password = '';
     var wantLength = 0;
-    // var wantUpper = false;
-    // var wantLower = false;
-    // var wantNumber = false;
-    // var wantSpecial = false;
+    var wantUpper = false;
+    var wantLower = false;
+    var wantNumber = false;
+    var wantSpecial = false;
 
     function userPrompt() {
-    while(wantLength < 8 || wantLength > 128) {
-        var wantLength = 0;
-        var wantLength = prompt("How long do you want your password to be? Enter a number between 8 and 128.");
-        if(isNaN(wantLength)) {
-           wantLength  = 0;
-            alert("Please enter a valid number between 8 and 128.");
-            continue;
-        }
-        wantLength = parseInt(wantLength);
-
-        if(wantLength < 8 || wantLength > 128) {
+        while(wantLength <= 8 || wantLength >= 128) {
+            wantLength = prompt("How long do you want your password to be? Enter a number between 8 and 128.");
+            if(isNaN(wantLength)) {
             wantLength  = 0;
-            alert("Please enter a valid number between 8 and 128.");
-            continue;
+                alert("Please enter a valid number between 8 and 128.");
+                continue;
+            }
+            wantLength = parseInt(wantLength);
+
+            if(wantLength <= 8 || wantLength >= 128) {
+                wantLength  = 0;
+                alert("Please enter a valid number between 8 and 128.");
+                continue;
+            }
         }
-    }
     console.log(wantLength);
 
-    while ((wantUpper || wantLower || wantNumber || wantSpecial) === false) {
-        var wantUpper = confirm("Do you want your password to contain Uppercase characters? \n[Ex. W, U, T]" );
-        var wantLower = confirm("Do you want your password to contain lowercase characters? \n[Ex. g, a, f]");
-        var wantNumber = confirm("Do you want your password to contain Numbers? \n[Ex. 2, 3, 4]");
-        var wantSpecial = confirm("Do you want your password to contain Special Characters? \n[Ex. $, *, @]");
+        while ((wantUpper || wantLower || wantNumber || wantSpecial) === false) {
+            wantUpper = confirm("Do you want your password to contain Uppercase characters? \n[Ex. W, U, T]" );
+            wantLower = confirm("Do you want your password to contain lowercase characters? \n[Ex. g, a, f]");
+            wantNumber = confirm("Do you want your password to contain Numbers? \n[Ex. 2, 3, 4]");
+            wantSpecial = confirm("Do you want your password to contain Special Characters? \n[Ex. $, *, @]");
 
-        if ((wantUpper || wantLower || wantNumber || wantSpecial) === false) {
-            alert("You must select at least one character type.");
-            continue;
+            if ((wantUpper || wantLower || wantNumber || wantSpecial) === false) {
+                alert("You must select at least one character type.");
+                continue;
+            }
         }
-    }
     }
     var passwordParameters = {
         passUpper: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
@@ -77,26 +76,25 @@
         passSpecial: [" ", "!", "'", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~"],     
     }
     function generatePassword(len) {
-            let totalString = (passString.length);
 
             if (wantUpper) {
-                passString += passUpper.join("");
+                passString += passwordParameters.passUpper.join("");
             }
 
-            if (wantLower === true) {
-                passString += passLower.join("");
+            if (wantLower) {
+                passString += passwordParameters.passLower.join("");
             }
 
-            if (wantNumber === true) {
-                passString += passNumber.join("");
+            if (wantNumber) {
+                passString += passwordParameters.passNumber.join("");
             }
 
-            if (wantSpecial === true) {
-                passString += passSpecial.join("");
+            if (wantSpecial) {
+                passString += passwordParameters.passSpecial.join("");
             }
 
             for (j = 0; j < len; j++) {
-            password += passString.charAt(Math.floor(Math.random() * totalString));
+            password += passString.charAt(Math.floor(Math.random() * passString.length));
 
             }
         return password;
@@ -133,11 +131,6 @@ wantUpper will add all Uppercase characters to the generation loop.
 wantLower will add all lowercase characters to the generation loop.
 wantNumber will add all numbers to the generation loop.
 wantSpecial will add all special characters to the generation loop.
-
-Check that the password contains at least one of each type asked for.
-    if wantUpper === true, does password contain anything from passUpper?
-    etc.
-    else, regenerate password.
 */
 
     </script>
