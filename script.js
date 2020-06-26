@@ -9,6 +9,7 @@ var wantNumber = false;
 var wantSpecial = false;
 var passDisplay = document.getElementById("passArea");
 
+
 function userPrompt() {
     while(wantLength < 8 || wantLength > 128) {
         wantLength = prompt("How long do you want your password to be? Enter a number between 8 and 128.");
@@ -68,18 +69,12 @@ function generatePassword(len) {
 
         }
     console.log("The size of the pool for each character is: " + passString.length);
-    callModal();
     return password;
 }
-
-function callModal() {
-    $('#passModal').modal('show')
+    function runPassGen() {
+        userPrompt();
+        passDisplay.textContent = generatePassword(wantLength);
 }
-
-
-userPrompt();
-passDisplay.textContent = generatePassword(wantLength);
-
 
 
 

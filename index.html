@@ -19,38 +19,15 @@
                     <hr>
                     <div class="password-box">
                         <h3>Your Secure Password</h3>
+                        <p id="passArea"></p>
                     </div>
                     <hr>
-                    <button type="button" class="btn button-red btn-lg" onclick="userPrompt()">Generate Password</button>
+                    <button type="button" class="btn button-red btn-lg" onclick="runPassGen()">Generate Password</button>
                 </div>
             </div>
             <div class="col"><p> </p></div> <!-- empty column -->
         </div>
     </section>
-
-    <!-- Password Display Modal -->
-    
-<!-- Modal -->
-<div class="modal fade" id="passModal" tabindex="-1" role="dialog" aria-labelledby="passwordModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="passwordModalLabel">Your Password</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body" id="passArea">
-          
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Copy password</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
 
     <!-- Bootstrap Javascript Refs -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
