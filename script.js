@@ -7,6 +7,7 @@ var wantUpper = false;
 var wantLower = false;
 var wantNumber = false;
 var wantSpecial = false;
+var passDisplay = document.getElementById("passArea");
 
 function userPrompt() {
     while(wantLength < 8 || wantLength > 128) {
@@ -24,7 +25,7 @@ function userPrompt() {
             continue;
         }
     }
-console.log(wantLength);
+console.log("The lenght of the password you requested is: " + wantLength);
 
     while ((wantUpper || wantLower || wantNumber || wantSpecial) === false) {
         wantUpper = confirm("Do you want your password to contain Uppercase characters? \n[Ex. W, U, T]" );
@@ -66,7 +67,8 @@ function generatePassword(len) {
         password += passString.charAt(Math.floor(Math.random() * passString.length));
 
         }
-        callModal();
+    console.log("The size of the pool for each character is: " + passString.length);
+    callModal();
     return password;
 }
 
@@ -76,7 +78,7 @@ function callModal() {
 
 
 userPrompt();
-generatePassword(wantLength);
+passDisplay.textContent = generatePassword(wantLength);
 
 
 
