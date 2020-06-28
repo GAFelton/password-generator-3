@@ -101,6 +101,7 @@ passGenBtn.addEventListener("click", function runPassGen() {
 
 passCopyBtn.addEventListener("click", function copyButton() {
     var promise = navigator.clipboard.writeText(passDisplay.textContent);
+    alert("Your password has been copied to the clipboard.");
 });
 
 resetBtn.addEventListener("click", function resetButton() {
