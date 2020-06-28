@@ -1,5 +1,6 @@
 //Generate Password JavaScript
 
+//Variables
 var passString = '';
 var password = '';
 var wantLength = 0;
@@ -12,7 +13,7 @@ var passGenBtn = document.getElementById("passGenBtn");
 var resetBtn = document.getElementById("resetBtn");
 var passCopyBtn = document.getElementById("passCopyBtn");
 
-
+//Functions.
 function userPrompt() {
     while(wantLength < 8 || wantLength > 128) {
         wantLength = prompt("How long do you want your password to be? Enter a number between 8 and 128.");
@@ -21,6 +22,11 @@ function userPrompt() {
             alert("Please enter a valid number between 8 and 128.");
             continue;
         }
+
+        if(wantLength === null) {
+            return;
+        }
+
         wantLength = parseInt(wantLength);
 
         if(wantLength < 8 || wantLength > 128) {
@@ -86,7 +92,18 @@ function changeButtons() {
     passCopyBtn.style.display = "block";
 }
 
-function resetButton() {
+// Add Event Listener for Buttons.
+passGenBtn.addEventListener("click", function runPassGen() {
+    userPrompt();
+    passDisplay.textContent = generatePassword(wantLength);
+    changeButtons();
+});
+
+passCopyBtn.addEventListener("click", function copyButton() {
+    var promise = navigator.clipboard.writeText(passDisplay.textContent);
+});
+
+resetBtn.addEventListener("click", function resetButton() {
     passDisplay.textContent = " ";
     passString = '';
     password = '';
@@ -100,25 +117,11 @@ function resetButton() {
     passCopyBtn.style.display = "none";
 
     // location.reload();
-}
+});
 
-function runPassGen() {
-    userPrompt();
-    passDisplay.textContent = generatePassword(wantLength);
-    changeButtons();
-}
 
-function copyButton() {
-    var promise = navigator.clipboard.writeText(passDisplay);
 
-    // var copyText = document.querySelector("#passCopyBtn");
-    // passDisplay.textContent.select();
-    // document.execCommand("copy");
-  }
 
-passCopyBtn.addEventListener("click", copyButton(event));
-passGenBtn.addEventListener("click", runPassGen(event));
-resetBtn.addEventListener("click", resetButton(event));
 
 /* PSEUDOCODE
 Object passwordParameters:
