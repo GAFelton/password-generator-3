@@ -40,6 +40,9 @@ h3 {
     text-align: center;
     color: gray;
 }
+#passArea {
+    word-wrap: break-word;
+}
 
 .button-red {
     background-color: rgb(141, 5, 5);
@@ -48,6 +51,10 @@ h3 {
     margin: 0.5em;
 }
 
-#passArea {
-    word-wrap: break-word;
+#resetBtn {
+    display: none;
+}
+
+#passCopyBtn {
+    display: none;
 }

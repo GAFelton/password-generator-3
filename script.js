@@ -8,6 +8,9 @@ var wantLower = false;
 var wantNumber = false;
 var wantSpecial = false;
 var passDisplay = document.getElementById("passArea");
+var passGenBtn = document.getElementById("passGenBtn");
+var resetBtn = document.getElementById("resetBtn");
+var passCopyBtn = document.getElementById("passCopyBtn");
 
 
 function userPrompt() {
@@ -26,7 +29,7 @@ function userPrompt() {
             continue;
         }
     }
-console.log("The lenght of the password you requested is: " + wantLength);
+    console.log("The lenght of the password you requested is: " + wantLength);
 
     while ((wantUpper || wantLower || wantNumber || wantSpecial) === false) {
         wantUpper = confirm("Do you want your password to contain Uppercase characters? \n[Ex. W, U, T]" );
@@ -48,35 +51,74 @@ var passwordParameters = {
 }
 function generatePassword(len) {
 
-        if (wantUpper) {
-            passString += passwordParameters.passUpper.join("");
-        }
+    if (wantUpper) {
+        passString += passwordParameters.passUpper.join("");
+    }
 
-        if (wantLower) {
-            passString += passwordParameters.passLower.join("");
-        }
+    if (wantLower) {
+        passString += passwordParameters.passLower.join("");
+    }
 
-        if (wantNumber) {
-            passString += passwordParameters.passNumber.join("");
-        }
+    if (wantNumber) {
+        passString += passwordParameters.passNumber.join("");
+    }
 
-        if (wantSpecial) {
-            passString += passwordParameters.passSpecial.join("");
-        }
+    if (wantSpecial) {
+        passString += passwordParameters.passSpecial.join("");
+    }
 
-        for (j = 0; j < len; j++) {
-        password += passString.charAt(Math.floor(Math.random() * passString.length));
+    for (j = 0; j < len; j++) {
+    password += passString.charAt(Math.floor(Math.random() * passString.length));
+    }
 
-        }
     console.log("The size of the pool for each character is: " + passString.length);
+    possibleCombis();
     return password;
 }
-    function runPassGen() {
-        userPrompt();
-        passDisplay.textContent = generatePassword(wantLength);
+function possibleCombis() {
+    x = passString.length ** wantLength;
+    console.log("There are " + x + " possible combinations.");
 }
 
+function changeButtons() {
+    passGenBtn.style.display = "none"; 
+    resetBtn.style.display = "block";
+    passCopyBtn.style.display = "block";
+}
 
+function resetButton() {
+    passDisplay.textContent = " ";
+    passString = '';
+    password = '';
+    wantLength = 0;
+    wantUpper = false;
+    wantLower = false;
+    wantNumber = false;
+    wantSpecial = false;
+    passGenBtn.style.display = "block"; 
+    resetBtn.style.display = "none";
+    passCopyBtn.style.display = "none";
+
+    // location.reload();
+}
+
+function runPassGen() {
+    userPrompt();
+    passDisplay.textContent = generatePassword(wantLength);
+    changeButtons();
+}
+
+function copyButton() {
+    var promise = navigator.clipboard.writeText(passDisplay);
+
+    // var copyText = document.querySelector("#passCopyBtn");
+    // passDisplay.textContent.select();
+    // document.execCommand("copy");
+  }
+
+passCopyBtn.addEventListener("click", copyButton(event));
+passGenBtn.addEventListener("click", runPassGen(event));
+resetBtn.addEventListener("click", resetButton(event));
 
 /* PSEUDOCODE
 Object passwordParameters:
