@@ -35,7 +35,7 @@ function userPrompt() {
             continue;
         }
     }
-    console.log("The lenght of the password you requested is: " + wantLength);
+    console.log("The length of the password you requested is: " + wantLength);
 
     while ((wantUpper || wantLower || wantNumber || wantSpecial) === false) {
         wantUpper = confirm("Do you want your password to contain Uppercase characters? \n[Ex. W, U, T]" );
