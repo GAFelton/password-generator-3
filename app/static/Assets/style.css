@@ -47,6 +47,10 @@ h3 {
     word-wrap: break-word;
 }
 
+.errorMessage {
+    color: crimson;
+}
+
 #passArea {
     word-wrap: break-word;
 }

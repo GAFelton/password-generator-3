@@ -20,7 +20,7 @@
       </div> <!-- empty column -->
       <div class="col-xs-12 col-lg-8"> <!-- main center column -->
         <div class="main-box">
-          <h2>Generate a Password</h2>
+          <h2>Generate a Password (with Python)</h2>
           <hr>
           <form action="http://localhost:5000/pypassword" method="POST">
             <h3>Password Settings:</h3>
@@ -47,9 +47,9 @@
             <button type="submit" class="btn button-red btn-lg" id="passGenBtn" value="Submit">Generate
               Password</button>
           </form>
-          {% for message in get_flashed_messages() %}
-          <h2>{{ message }}</h2>
-          {% endfor %}
+          {% if error%}
+          <p class="errorMessage"><strong>{{error}}</strong></p>
+          {% endif%}
           <div class="password-box">
             <h3>Your Secure Password</h3>
             {% block content %}{% endblock %}
@@ -59,6 +59,15 @@
             <button type="button" class="btn button-red btn-lg" id="resetBtn">Reset</button>
             <button type="button" class="btn button-red btn-lg" id="passCopyBtn">Copy Password</button>
           </div>
+          <form action="http://localhost:5000/getPy" method="POST">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="isPython" name="isPython" checked>
+              <label class="form-check-label" for="isPython">Password Generation via Python?</label>
+            </div>
+            <div>
+              <button type="submit" value="Submit">Submit</button>
+            </div>
+          </form>
         </div>
       </div>
       <div class="col">

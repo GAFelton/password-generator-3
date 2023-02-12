@@ -1,7 +1,6 @@
 import random
 # Importing flask module in the project is mandatory
-# An object of Flask class is our WSGI application.
-from flask import Flask, flash, request, render_template
+from flask import abort, Flask, flash, redirect, render_template, request, url_for
 
 # Flask constructor takes the name of
 # current module (__name__) as argument.
@@ -16,20 +15,30 @@ app.config.from_mapping(
 # the associated function.
 @app.route("/")
 def index():
-   return render_template("form.html")
- 
-# @app.route("/pypassword")
-# def createPythonPassword():
-#   """Generates a random password using user inputs."""
+   return render_template("index.html")
+
+@app.route("/getPy", methods = ["POST"])
+def getPy():
+   if request.method == 'POST':
+      pyCheckmark = None
+      pyCheckmark = request.form.get("isPython")
+
+      if pyCheckmark is not None:
+         return redirect('/pypassword')
+      
+      return redirect('/')
+      
 
 @app.route('/pypassword', methods = ['POST', 'GET'])
 def pyPassword():
+   """Generates a random password using user inputs."""
+
    if request.method == 'POST':
       error = None
       passOptions = []
       wantLength = int(request.form['wantLength'])
 
-      if wantLength < 8 or wantLength < 128:
+      if wantLength < 8 or wantLength > 128:
          error = "Password length must be between 8-128 characters."
       
       # Build possible character options for password
@@ -50,8 +59,7 @@ def pyPassword():
 
       # Show errors
       if error is not None:
-         flash(error)
-         # return redirect(url_for('index'))
+         return render_template('form.html', error=error)
 
 
       # Run Password Generation
