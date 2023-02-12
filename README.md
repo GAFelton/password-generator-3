@@ -7,7 +7,7 @@ To create a web application that randomly generates a password based on user inp
 
 
 
-![Screenshot of Deployed Project](./Assets/pw-generator-screenshot.jpg)
+![Screenshot of Deployed Project](./app/static/Assets/pw-generator-screenshot.jpg)
 
 [Link to Deployed Website](https://gafelton.github.io/password-generator-3/)
 
